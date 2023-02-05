@@ -1,4 +1,6 @@
-function add(a,b) {
-  return a + b; 
+// write function getComputerChoice that will return rock, paper, or scissors
+function getComputerChoice(answer) {
+  return answer[Math.floor(Math.random() * answer.length)];
 }
-alert(add(1,2));
+
+console.log(getComputerChoice(["rock", "paper", "scissors"]));
