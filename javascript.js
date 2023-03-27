@@ -19,30 +19,37 @@ const getComputerChoice = () => {
 // function game will call playRound function 5 times and record results and announce winner
 function userChoice() {
   let userChoice = prompt("Do you chose rock, paper, or scissors?");
-  userChoice = userChoice.toLowerCase();
+  if (typeof userChoice === "string") {
+    userChoice = userChoice.toLowerCase();
+  }
   if (
     userChoice == "rock" ||
     userChoice == "paper" ||
     userChoice == "scissors"
   ) {
     return userChoice;
-  } else if (userChoice === "" || userChoice === null) {
-    alert("Enter an answer");
   } else {
-    alert("not a valid choice");
+    alert("Enter an answer");
   }
 }
 
 const playRound = (selection, computerSelection) => {
+  if (selection === undefined) {
+    return;
+  }
+
   if (selection === computerSelection) {
     return `It's a tie! you both picked ${selection}`;
-  } else if (selection === "rock" && computerSelection === "scissors") {
+  }
+  if (selection === "rock" && computerSelection === "scissors") {
     playerScore++;
     return "You win! Rock beats Scissors";
-  } else if (selection === "paper" && computerSelection === "rock") {
+  }
+  if (selection === "paper" && computerSelection === "rock") {
     playerScore++;
     return "You win! Paper beats Rock";
-  } else if (selection === "scissors" && computerSelection === "paper") {
+  }
+  if (selection === "scissors" && computerSelection === "paper") {
     playerScore++;
     return "You win! Scissors beats Paper";
   } else {
@@ -54,6 +61,7 @@ const playRound = (selection, computerSelection) => {
 function game() {
   for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
     let result = playRound(userChoice(), getComputerChoice());
+    if (result === undefined) continue;
     console.log(result);
     const score = "Player Score: " + playerScore + " CPU Score: " + compScore;
     console.log(score);
