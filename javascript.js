@@ -27,7 +27,7 @@ function userChoice() {
   ) {
     return userChoice;
   } else if (userChoice === "" || userChoice === null) {
-    alert("Enter an answer"); 
+    alert("Enter an answer");
   } else {
     alert("not a valid choice");
   }
@@ -51,17 +51,14 @@ const playRound = (selection, computerSelection) => {
   }
 };
 
-const game = () => {
+function game() {
   for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
-    const computerSelection = getComputerChoice();
-    let selection = userChoice();
-
-    let result = playRound(selection, computerSelection);
+    let result = playRound(userChoice(), getComputerChoice());
     console.log(result);
     const score = "Player Score: " + playerScore + " CPU Score: " + compScore;
     console.log(score);
   }
-};
+}
 
 game();
 
